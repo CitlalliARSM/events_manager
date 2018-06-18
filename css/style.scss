@@ -1,0 +1,21 @@
+@charset 'UTF-8';
+
+///* 1.RESET AND VENDOR: reset file and style sheets of vendor tools that will be overwritten by our project effective styles */
+@import '_globals/tb-normalize';  /* <-- tb-normalize --> An adapted version of Normalize (stylesheet to reste Browser styling - corrects common browser inconsistencies) */
+
+///* 2.START: Project Definitions & Variables -- > declarative files and vendor files that depend on variables */
+@import 'variables'; /* <-- Declarations of ALL variables */
+//@import '_globals/prefixer';
+//@import '_globals/functions';
+//@import '_globals/mixins_animations';
+@import '_globals/mixins';
+@import "_globals/tb-grid";  /* <-- tb-grid --> Adapted version of materialize grid for internal use */
+
+///* 3.CSS-GLOBALS: files with global styling that might be overwritten by tbModules declarations - Order from less important/specific to more important/specific*/
+@import '_globals/helpers'; /* <-- helpers.scss - helping classes */
+@import '_globals/globals'; /* <-- globals.scss - html styling and global classes */
+@import '_globals/buttons';  /* <-- buttons.scss - setting of styles for general buttons */
+@import '_globals/typography';  /* <-- typography.scss - setting of styles for general typography */
+
+///* 4.CSS-Templates/ Specific style files for modules and partials*/
+@import '_partials/index_example';  /* <-- index_example.scss - TO DELETE --- example of frontend functionality scripts included */

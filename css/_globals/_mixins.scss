@@ -1,0 +1,220 @@
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+///* MIXINS */
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+//box sizing
+@mixin box-sizing($box-model: border-box) {
+    -webkit-box-sizing: $box-model; // Safari <= 5
+    -moz-box-sizing: $box-model; // Firefox <= 19
+    box-sizing: $box-model;
+}
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+    -moz-background-clip: padding-box; /* stops bg color from leaking outside the border: */
+    -webkit-background-clip: padding-box; /* stops bg color from leaking outside the border: */
+    background-clip: padding-box; /* stops bg color from leaking outside the border: */
+}
+
+@mixin user-select($val) {
+  -webkit-user-select: $val;  /* Chrome all / Safari all */
+  -moz-user-select: $val;     /* Firefox all */
+  -ms-user-select: $val;      /* IE 10+ */
+  user-select: $val;          /* Likely future */
+}
+
+@mixin box-shadow($args1) {
+    -webkit-box-shadow: $args1;
+    -moz-box-shadow: $args1;
+    box-shadow: $args1;
+}
+
+///* Flexbox */
+
+@mixin flex-container($wrap:wrap,$direction:row) {
+    display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    flex-wrap: $wrap;
+    flex-direction: $direction;
+}
+
+@mixin flex-item($flex-basis:50%,$width:100%) {
+    width:$width;
+    -ms-flex-preferred-size: $flex-basis;
+    flex-basis: $flex-basis;
+}
+
+///* -typograpghy- */
+@mixin text-columns($count:2, $gap:$gutter){
+    -moz-column-count: $count;
+    -webkit-column-count: $count;
+    column-count: $count;
+    -webkit-column-gap: $gap;
+    -moz-column-gap: $gap;
+    column-gap: $gap;
+}
+
+//Prefixer for the hyphens property
+@mixin hyphens($args:auto) {
+    -moz-hyphens: $args;
+    -o-hyphens: $args;
+    -webkit-hyphens: $args;
+    -ms-hyphens: $args;
+    hyphens: $args;
+}
+
+// =========================================================================
+//
+//  PRECISE CONTROL OVER RESPONSIVE TYPOGRAPHY FOR SASS
+//  ---------------------------------------------------
+//  Indrek Paas @indrekpaas
+//
+//  Inspired by Mike Riethmuller's Precise control over responsive typography
+//  http://madebymike.com.au/writing/precise-control-responsive-typography/
+//
+//  `strip-unit()` function by Hugo Giraudel
+//
+//  11.08.2016 Remove redundant `&` self-reference
+//  31.03.2016 Remove redundant parenthesis from output
+//  02.10.2015 Add support for multiple properties
+//  24.04.2015 Initial release
+//
+// =========================================================================
+
+@mixin fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value) {
+  @each $property in $properties {
+    #{$property}: $min-value;
+  }
+
+  @media screen and (min-width: $min-vw) {
+    @each $property in $properties {
+      #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
+    }
+  }
+
+  @media screen and (min-width: $max-vw) {
+    @each $property in $properties {
+      #{$property}: $max-value;
+    }
+  }
+}
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+/* Single property */
+/*html {
+  @include fluid-type(font-size, 320px, 1366px, 14px, 18px);
+}
+*/
+/* Multiple properties with same values */
+/*h1 {
+  @include fluid-type(padding-bottom padding-top, 20em, 70em, 2em, 4em);
+}
+*/
+
+// =========================================================================
+//  END --- PRECISE CONTROL OVER RESPONSIVE TYPOGRAPHY FOR SASS
+//  ---------------------------------------------------
+
+
+///* gradient -- bottom to top*/
+@mixin gradient-bottom-top($start-color:$color-light,$end-color:$color-dark){
+        background: $start-color;
+        background: -moz-linear-gradient(top, $start-color 0%, $end-color 100%);
+        background: -webkit-gradient(left top, left bottom, color-stop(0%, $start-color), color-stop(100%, $end-color));
+        background: -webkit-linear-gradient(top, $start-color 0%, $end-color 100%);
+        background: -o-linear-gradient(top, $start-color 0%, $end-color 100%);
+        background: -ms-linear-gradient(top, $start-color 0%, $end-color 100%);
+        background: linear-gradient(to top, $start-color 0%, $end-color 100%);
+}
+
+///* gradient -- right to left gradient*/
+@mixin gradient-right-left($start-color:$color-light,$end-color:$color-dark){
+        background: $start-color;
+        background: -moz-linear-gradient(left, $start-color 0%, $end-color 80%);
+        background: -webkit-gradient(left,right, color-stop(0%, $start-color), color-stop(80%, $end-color));
+        background: -webkit-linear-gradient(left, $start-color 0%, $end-color 80%);
+        background: -o-linear-gradient(left, $start-color 0%, $end-color 80%);
+        background: -ms-linear-gradient(left, $start-color 0%, $end-color 80%);
+        background: linear-gradient(to left, $start-color 0%, $end-color 80%);
+}
+
+///* gradient -- right to left gradient*/
+@mixin gradient-radial-gradient($start-color:$color-light,$middle-color:$color-medium,$end-color:$color-dark){
+        background: $start-color;
+        background: -moz-radial-gradient(center, ellipse cover, $start-color 0%, $middle-color 70%, $end-color 100%);
+        background: -webkit-radial-gradient(center, ellipse cover, $start-color 0%,$middle-color 70%,$end-color 100%);
+        background: radial-gradient(ellipse at center, $start-color 0%,$end-color 70%,$middle-color 100%);
+}
+
+// transforms
+@mixin transform($transforms) {
+	   -moz-transform: $transforms;
+	     -o-transform: $transforms;
+	    -ms-transform: $transforms;
+	-webkit-transform: $transforms;
+          transform: $transforms;
+}
+
+// Vertical and horizontal centering using the translate method
+@mixin vh-center--translate-method() {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include translate(-50%, -50%);
+}
+
+@mixin h-center--translate-method() {
+    position: absolute;
+    left: 50%;
+    @include translate(-50%, 0);
+}
+
+@mixin v-center--translate-method() {
+    position: absolute;
+    top: 50%;
+    @include translate( 0, -50%);
+}
+
+@mixin h-center-landingpage-block-max-width() {
+    width: 100%;
+    max-width: $max_width;
+    margin: 0 auto;
+}
+
+@mixin break-word-hyphens-auto() {
+    word-break: break-word;
+    @include hyphens(auto);
+}
+
+// rotate
+@mixin rotate ($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+
+// Flexbox Containers
+
+@mixin flexbox {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+//-----------------------------------------------------------------------
+
+// Float Self cleaning elements
+
+@mixin self-clean() {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}

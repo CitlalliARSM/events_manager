@@ -1,0 +1,128 @@
+/* tb-grid --> adaptation of materialize grid for internal use and development */
+.row {
+  // Clear floating children
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .col {
+    float: left;
+    @include box-sizing(border-box);
+    border: $grid-showborder;
+
+    /* Mobile first - small */
+    $i: 1;
+    @while $i <= $grid-num-cols {
+      $perc: unquote((100 / ($grid-num-cols / $i)) + "%");
+      &.s#{$i} {
+        width: $perc;
+        margin-left: 0;
+      }
+      $i: $i + 1;
+    }
+    $i: 1;
+    @while $i <= $grid-num-cols {
+      $perc: unquote((100 / ($grid-num-cols / $i)) + "%");
+      &.offset-s#{$i} {
+        margin-left: $perc;
+      }
+      $i: $i + 1;
+    }
+
+    /* from medium */
+    @media #{$breakpoint-medium-up} {
+
+      $i: 1;
+      @while $i <= $grid-num-cols {
+        $perc: unquote((100 / ($grid-num-cols / $i)) + "%");
+        &.m#{$i} {
+          width: $perc;
+          margin-left: 0;
+        }
+        $i: $i + 1;
+      }
+      $i: 1;
+      @while $i <= $grid-num-cols {
+        $perc: unquote((100 / ($grid-num-cols / $i)) + "%");
+        &.offset-m#{$i} {
+          margin-left: $perc;
+        }
+        $i: $i + 1;
+      }
+
+    }
+
+    /* from large */
+    @media #{$breakpoint-large-up} {
+
+      $i: 1;
+      @while $i <= $grid-num-cols {
+        $perc: unquote((100 / ($grid-num-cols / $i)) + "%");
+        &.l#{$i} {
+          width: $perc;
+          margin-left: 0;
+        }
+        $i: $i + 1;
+      }
+      $i: 1;
+      @while $i <= $grid-num-cols {
+        $perc: unquote((100 / ($grid-num-cols / $i)) + "%");
+        &.offset-l#{$i} {
+          margin-left: $perc;
+        }
+        $i: $i + 1;
+      }
+
+    }
+
+
+    /* from xlarge */
+    @media #{$breakpoint-xlarge-up} {
+
+      $i: 1;
+      @while $i <= $grid-num-cols {
+        $perc: unquote((100 / ($grid-num-cols / $i)) + "%");
+        &.xl#{$i} {
+          width: $perc;
+          margin-left: 0;
+        }
+        $i: $i + 1;
+      }
+      $i: 1;
+      @while $i <= $grid-num-cols {
+        $perc: unquote((100 / ($grid-num-cols / $i)) + "%");
+        &.offset-xl#{$i} {
+          margin-left: $perc;
+        }
+        $i: $i + 1;
+      }
+
+    }
+
+    /* from big */
+    @media #{$breakpoint-big-up} {
+
+      $i: 1;
+      @while $i <= $grid-num-cols {
+        $perc: unquote((100 / ($grid-num-cols / $i)) + "%");
+        &.b#{$i} {
+          width: $perc;
+          margin-left: 0;
+        }
+        $i: $i + 1;
+      }
+      $i: 1;
+      @while $i <= $grid-num-cols {
+        $perc: unquote((100 / ($grid-num-cols / $i)) + "%");
+        &.offset-b#{$i} {
+          margin-left: $perc;
+        }
+        $i: $i + 1;
+      }
+
+    }
+
+  }
+}

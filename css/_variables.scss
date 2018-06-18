@@ -1,0 +1,84 @@
+/**
+*variables.scss:
+*
+*Table of content
+*
+*01- Colors
+*02- Sizes
+*03- container
+*04- Media Query Ranges
+*05- Breakpoints & Grid Variables
+*06- Typography
+*07- buttons
+*08- tables
+**/
+
+/*** 1- Colors ***/
+$color-main: #4392BD;
+$color-secondary: #17344A;
+$color-contrast: #dfd9c8;
+$color-light: #fff;
+$color-medium: #c2c2c2;
+$color-dark: #010101;
+$color-accent: red;
+
+/*** 2- sizes ***/
+$size-gutter: 40px;
+$size-page-maxwidth: 1920px;
+$size-page-minwidth: 320px;
+$size-center-maxwidth: 1320px;
+
+/*** 3- container  ***/
+$container-page-bg: $color-light;
+$container-center-padding: $size-gutter;
+
+/*** 4- Media Query Ranges ***/
+$media-small: 550px;
+$media-medium: 768px;
+$media-large: 1024px;
+$media-xlarge: 1320px;
+$media-big: 1920px;
+
+/*** 5- Breakpoints & Grid Variables ***/
+$grid-num-cols: 12;
+$grid-showborder: 1px solid $color-accent;
+
+/* Grid breakpoints - Mobile first approach */
+$breakpoint-medium-up: "only screen and (min-width: #{$media-medium + 1})";
+$breakpoint-large-up: "only screen and (min-width: #{$media-large  + 1})";
+$breakpoint-xlarge-up: "only screen and (min-width: #{$media-xlarge + 1})";
+$breakpoint-big-up: "only screen and (min-width: #{$media-big + 1})";
+
+/* Extra breakpoints */
+$breakpoint-small-only: "only screen and (max-width: #{$media-small})";
+$breakpoint-medium-only: "only screen and (min-width: #{$media-small}) and (max-width: #{$media-medium})";
+$breakpoint-large-only: "only screen and (min-width: #{$media-medium}) and (max-width: #{$media-large})";
+$breakpoint-xlarge-only: "only screen and (min-width: #{$media-large}) and (max-width: #{$media-xlarge})";
+$breakpoint-big-only: "only screen and (min-width: #{$media-xlarge}) and (max-width: #{$media-big})";
+
+/*** 6- Font Typography ***/
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,600,700';
+$font-family: 'Open Sans', sans-serif;
+$font-size: 18px;
+$font-color: $color-dark;
+$font-headings: 'Open Sans', sans-serif;
+$font-heading-color: $color-medium;
+$font-color-link: $color-secondary;
+$font-color-link-hover: $color-medium;
+
+/* icomoon font freeset */
+@import "../fonts/icomoon/_icomoon-font";
+$font-icon: 'icomoon';
+
+/*** 7- buttons ***/
+$button-minwidth:250px;
+$button-minheight:50px;
+$button-bgcolor: $color-main;
+$button-bghover: $color-secondary;
+
+/*** 8- tables ***/
+$table-border-color: $color-medium;
+$tablerow-light: $color-light;
+$tablerow-dark: $color-contrast;
+$tablerow-hover: $color-medium;
+$table-th-color: $color-medium;

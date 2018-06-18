@@ -1,0 +1,27 @@
+﻿/* typography.scss */
+
+/* links */
+a {
+    color: $font-color-link;
+    &:hover {
+        color: $font-color-link-hover;
+    }
+}
+
+/* heading */
+.heading {
+    @include hyphens(auto);
+    &.heading__1 {
+    }
+}
+
+/* General textblock */
+.textblock {
+}
+
+.textblock__columns2 {
+    @include text-columns(2,$size-gutter);
+    @media screen and (max-width:$media-medium) {
+        @include text-columns(1,0);
+    }
+}

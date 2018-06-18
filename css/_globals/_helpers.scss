@@ -1,0 +1,179 @@
+/* helpers.scss - helper classes */
+/* Eigenschaften - Definitionen */
+
+.dn {
+    display: none;
+}
+
+.hyphenate {
+    @include hyphens();
+}
+
+.lclear {
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    font-size: 0%;
+    &_l {
+        clear: left;
+    }
+    &_r {
+        clear: right;
+    }
+}
+
+.clear_after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.lc_s {
+    font-size: 0%;
+    overflow: hidden;
+
+    @for $i from 1 through 16 {
+        &.s#{$i*2} {
+            height: $i*2px;
+        }
+    }
+
+    &.gutter {
+        height: $size-gutter;
+    }
+
+    &.half_gutter {
+        height: $size-gutter / 2;
+    }
+}
+
+.fl {
+    float: left;
+    display: inline;
+    &_selfclean {
+        float: left;
+        display: inline;
+        @include self-clean();
+    }
+}
+
+.fr {
+    float: right;
+    display: inline;
+    &_selfclean {
+        float: right;
+        display: inline;
+        @include self-clean();
+    }
+}
+
+.hiddenlink {
+    &__wrap{
+        position: relative;
+    }
+    position: absolute;
+    font-size: 0;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left:0;
+    cursor: pointer;
+}
+
+/* flex helpers */
+.container_flex {
+    @include flex-container();
+}
+.item_flex {
+    @include flex-item(auto,auto);
+    //flex-grow:10;
+}
+
+/* hide helping classes */
+@media #{$breakpoint-small-only} {
+    .hide-on-small-only {
+        display: none;
+    }
+}
+@media #{$breakpoint-medium-only} {
+    .hide-on-medium-only {
+        display: none;
+    }
+}
+@media #{$breakpoint-large-only} {
+
+    .hide-on-large-only {
+        display: none;
+    }
+}
+@media #{$breakpoint-xlarge-only} {
+    .hide-on-xlarge-only {
+        display: none;
+    }
+}
+@media #{$breakpoint-big-only} {
+   .hide-on-big-only {
+        display: none;
+    }
+}
+
+@media #{$breakpoint-medium-up} {
+    .hide-on-medium-and-up {
+        display: none;
+    }
+}
+@media #{$breakpoint-large-up} {
+
+    .hide-on-large-and-up {
+        display: none;
+    }
+}
+@media #{$breakpoint-xlarge-up} {
+    .hide-on-xlarge-and-up{
+        display: none;
+    }
+}
+
+@media all and (max-width: $media-large) {
+    .hide-on-medium-and-down {
+        display: none;
+    }
+}
+@media all and (max-width: $media-xlarge) {
+    .hide-on-large-and-down {
+        display: none;
+    }
+}
+@media all and (max-width: $media-big) {
+    .hide-on-xlarge-and-down {
+        display: none;
+    }
+}
+/* END hide helping classes */
+
+/*legacy helping classes*/
+.tal {
+    text-align: left;
+}
+.tar {
+    text-align: right;
+}
+.tac {
+    text-align: center;
+}
+.cp {
+    cursor: pointer;
+}
+.no_margin {
+    margin: 0;
+}
+.no_margin_bottom {
+    margin-bottom: 0;
+}
+.only_print {
+    display: none;
+}
+
+/* Eigenschaften - Definitionen - ENDE */
+/* helpers.scss - helper classes - END */

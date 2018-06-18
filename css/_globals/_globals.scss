@@ -1,0 +1,87 @@
+/* global.scss: HTML tags styling and General global classes */
+
+/* html tags styling only when necessary*/
+* {
+    @include box-sizing();
+}
+body {
+    min-width: $size-page-minwidth;
+    font-size: $font-size;
+    font-family: $font-family;
+    color: $font-color;
+    background-color: $color-contrast;
+}
+
+img {
+    max-width: 100%;
+}
+
+table {
+    width: 100%;
+    margin: $size-gutter 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    @media #{$breakpoint-small-only}{
+        font-size:.8rem;
+    }
+    td, th {
+        border: 1px solid $table-border-color;
+        padding: $size-gutter / 4 $size-gutter / 2;
+        @media #{$breakpoint-small-only}{
+            padding: $size-gutter / 8;
+        }
+    }
+
+    th {
+        font-weight: bold;
+        background: $table-th-color;
+    }
+
+    tr {
+        td {
+            background: $tablerow-light;
+        }
+
+        &:nth-child(2n+1) {
+            td {
+                background: $tablerow-dark;
+            }
+        }
+
+        &:hover {
+            td {
+                background: $tablerow-hover;
+            }
+        }
+    }
+}
+
+/* Generic / Global Classes - Styles */
+.container_page {
+    max-width: $size-page-maxwidth;
+    min-width: $size-page-minwidth;
+    background-color:$container-page-bg;
+    margin: 0 auto;
+}
+
+.container_center {
+    max-width: $size-center-maxwidth;
+    width: 100%;
+    margin: 0 auto;
+    padding: $container-center-padding 0;
+    .center_wrap{
+        padding: 0;
+    }
+    @media all and (max-width: $size-center-maxwidth){
+        padding:$container-center-padding $container-center-padding/2;
+    }
+}
+
+.tb_logo {
+    display: inline-block;
+    width: 70px;
+    height: 15px;
+    img {
+        width: 100%;
+    }
+}

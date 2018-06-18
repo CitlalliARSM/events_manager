@@ -1,0 +1,142 @@
+/* index_example - To delete from includes just an example style sheet!!!  */
+
+/* heading */
+.heading {
+    @include hyphens(auto);
+    &.heading__3 {
+        border: 1px solid $color-main;
+        color: $color-main;
+        @include fluid-type('padding-top',$media-small, $media-big, 100px, 20px );
+        @include fluid-type('font-size',$media-small, $media-big, 14px, 60px );
+        @include fluid-type('padding-bottom',$media-small, $media-big, 100px, 20px );
+    }
+}
+
+.index_example {
+    padding-top: 80px;
+    /*main class is used mostly to overwritte global elements / atoms in atomic design */
+    .textblock {
+        padding: $size-gutter;
+        &.custom_active {
+            background-color: rgba($color-main,.3);
+            color: rgba($color-main,.3);
+            &:after {
+                content: ' ACTIVE :)';
+                font-weight: bold;
+                color:black;
+            }
+        }
+    }
+    .button {
+        margin: $size-gutter/2 0;
+        &.custom_active {
+            background-color: $color-secondary;
+            &:after {
+                content: ' ACTIVE :)';
+            }
+        }
+    }
+}
+
+/*general styles*/
+.section_top {
+    min-height: 30vh;
+    justify-content: center;
+    flex-direction: column;
+    background-color: $color-main;
+}
+.section_bottom {
+    background-color: $color-secondary;
+}
+.item {
+    padding: $size-gutter/2 0;
+    border-top:1px solid $color-secondary;
+    border-bottom:1px solid $color-secondary;
+    margin-top: -1px;
+    .textblock {
+        background-color: rgba($color-secondary,.2);
+    }
+}
+
+/*top bar that fixes*/
+.top_bar {
+    padding: 10px;
+    background-color: rgba($color-light,.9);
+    border-bottom:4px solid $color-medium;
+    position: fixed;
+    overflow: hidden;
+    top:0;
+    width: 100%;
+    height: 80px;
+    &.navi_scrolled {
+        &:before {
+            top:0;
+            right:0;
+            position: absolute;
+            display: inline-block;
+            font-weight: bold;
+            content: "scrolled :)";
+        }
+    }
+}
+
+/*Accordeon*/
+.accordeon {
+    &_opener {
+        padding: 10px 0;
+        cursor: pointer;
+        background-color: rgba($color-secondary,.4);
+        &:after {
+            font-size: 1.5em;
+            line-height: 0;
+            font-weight: bold;
+
+            content:'+';
+        }
+        &.acc_open{
+            &:after {
+                content:'-';
+            }
+        }
+    }
+    &_content {
+        height: 0;
+        overflow: hidden;
+    }
+    &_inner {
+        padding: $size-gutter;
+        background-color: rgba($color-secondary,.2);
+    }
+}
+
+/*full width method*/
+body {
+    &.scrollfixed {
+        position: fixed;
+        overflow-y: hidden;
+        width:100%;
+    }
+}
+
+.full_element {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    top:0;
+    left: -100%;
+    z-index: 1000;
+    transition: all .5s;
+    .element_wrap {
+        color:white;
+        min-height: 100%;
+        background-color: rgba($color-dark,.9);
+    }
+    &.is_active {
+        left: 0;
+        overflow: auto;
+        padding: 0;
+        .element_wrap {
+            position: relative;
+        }
+    }
+}

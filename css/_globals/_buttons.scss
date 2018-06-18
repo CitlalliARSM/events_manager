@@ -1,0 +1,26 @@
+﻿/*  buttons.scss  */
+.button {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    color: $color-light;
+    line-height: $button-minheight;
+    background-color: $button-bgcolor;
+    min-width: $button-minwidth;
+    min-height: $button-minheight;
+    transition: all .3s;
+    -webkit-appearance: none;
+    border: none;
+    &:hover {
+        background-color: $button-bghover;
+        color: $color-light;
+    }
+    &.button__1{
+
+    }
+    /* Until $small-screen (see variables for measurements) */
+    @media screen and (max-width:$media-small) {
+        width: 100%;
+    }
+}
